@@ -5,7 +5,7 @@ A python package for the MlSSI Software Summer School.
 
 # Add imports here
 from .molecule import *
-
+from .measure import *
 # Handle versioneer
 from ._version import get_versions
 versions = get_versions()
