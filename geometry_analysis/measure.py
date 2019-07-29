@@ -25,6 +25,8 @@ def calculate_distance(rA, rB):
 
     Examples
     --------
+    >>> r1 = np.array([0, 0, 0])
+    >>> r2 = np.array([0, 0.1, 0])
     >>> calculate_distance(np.array([0, 0, 0], [0, 0.1, 0]))
     0.1
     """
