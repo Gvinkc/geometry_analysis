@@ -1,65 +1,12 @@
 """
 molecule.py
 A python package for the MolSSI Software Summer School.
-
 Contains a molecule class
 """
 
 import numpy as np
-from .measure import calculate_distance, calculate_angle
 
-#def calculate_distance(rA, rB):
-    #"""Calculate the distance between points A and B.
-    #
-    #Parameters
-    #----------
-    #rA : numpy array
-        #The x, y, z coordinates of point A
-    #rB : numpy array
-        #The x, y, z coordinates of point B
-    #
-    #Returns
-    #-------
-    #distance : float
-        #The distance between points A and B.
-    #
-    #Examples
-    #--------
-    #>>> calculate_distance(np.array([0, 0, 0], [0, 0.1, 0]))
-    #0.1
-    #"""
-    #dist_vec = (rA - rB)
-    #distance = np.linalg.norm(dist_vec)
-    #return distance
-#
-#
-#def calculate_angle(rA, rB, rC, degrees=False):
-    #"""Calculate angle between points A, B, and C
-    #
-    #Parameters
-    #----------
-    #rA : numpy array
-        #The x, y, z coordinates of point A
-    #rB : numpy array
-        #The x, y, z coordinates of point B
-    #degrees : bool, optional
-        #Return the calculated angle in degrees.
-    #
-    #Returns
-    #-------
-    #angle : float
-        #The distance between points A and B.
-    #"""
-    #AB = rB - rA
-    #BC = rB - rC
-#
-    #theta = np.arccos(np.dot(AB, BC) / (np.linalg.norm(AB) * np.linalg.norm(BC)))
-#
-    #if degrees:
-        #return np.degrees(theta)
-    #else:
-        #return theta
-
+from .measure import calculate_angle, calculate_distance
 
 class Molecule:
     def __init__(self, name, symbols, coordinates):
@@ -71,10 +18,10 @@ class Molecule:
         self.symbols = symbols
         self._coordinates = coordinates
         self.bonds = self.build_bond_list()
-
+        print('self.bonds', self.bonds)
     @property
     def num_atoms(self):
-        return len(self.coordinates)
+        return len(self._coordinates)
 
     @property
     def coordinates(self):
@@ -88,15 +35,11 @@ class Molecule:
     def build_bond_list(self, max_bond=2.93, min_bond=0):
         """
         Build a list of bonds based on a distance criteria.
-
         Atoms within a specified distance of one another will be considered bonded.
-
         Parameters
         ----------
         max_bond : float, optional
-
         min_bond : float, optional
-
         Returns
         -------
         bond_list : list
@@ -115,9 +58,8 @@ class Molecule:
         return bonds
 
 
-# THIS CODE IS INCOMPLETE< ASK For code# THIS CODE IS INCOMPLETE< ASK For code# THIS CODE IS INCOMPLETE< ASK For code
-
 if __name__ == "__main__":
+    # Do something if this file is invoked on its own
     random_coordinates = np.random.random([3, 3])
     name = "my molecule"
     symbols = ["H", "O", "H"]
